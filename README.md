@@ -6,7 +6,7 @@ This automates Active Directory user creation. It prompts for domain, top-level 
 - **Connectivity Check:** Verify connectivity with the primary domain controller.
 - **OU Validation:** Check if the specified organizational unit exists.
 - **CSV Import:** Import user details from a CSV file for bulk processing.
-- **User Creation:** Efficiently create user accounts with default passwords.
+- **User Creation:** Efficiently create user accounts with default passwords. (Default is Password123, users are prompted to set a password upon loggin in)
 - **Success Tracking:** Display success messages for each user created.
 - **User Count:** Track the number of users added and skipped during execution.
 - **Execution Time:** Calculate and display the duration of the script execution.
