@@ -1,6 +1,6 @@
 # Prompt for the domain, TLD, and OU
 $domain = Read-Host "Enter the domain name (e.g., example)"
-$tld = Read-Host "Enter the top-level domain (e.g., .com)"
+$tld = Read-Host "Enter the top-level domain (e.g, com)"
 $ou = Read-Host "Enter the Organizational Unit (OU) name (e.g., corp-users)"
 
 # Construct the default OU path
