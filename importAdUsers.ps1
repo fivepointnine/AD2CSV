@@ -1,6 +1,11 @@
 # Add reference to the Windows.Forms assembly for OpenFileDialog
 Add-Type -AssemblyName System.Windows.Forms
 
+# Start Transcript for logging
+$logFileName = "CSV2AD_LOG.txt"
+$logFilePath = Join-Path $env:USERPROFILE $logFileName
+Start-Transcript -Path $logFilePath -Append
+
 # Function to show the open file dialog box
 function Show-OpenFileDialog {
     $openFileDialog = New-Object System.Windows.Forms.OpenFileDialog
@@ -16,6 +21,7 @@ function Get-OrganizationalUnits {
 }
 
 # Function to create a user
+# Function to create a user with a unique UPN
 function Create-User {
     param (
         [string]$username,
@@ -27,6 +33,8 @@ function Create-User {
 
     # Attempt to create the user account
     try {
+        # Generate a unique UPN by appending a unique identifier
+        $uniqueIdentifier = Get-Date -Format "yyyyMMddHHmmss"
         $userParams = @{
             SamAccountName        = $username
             GivenName             = $firstName
@@ -34,7 +42,7 @@ function Create-User {
             EmailAddress          = $email
             Path                  = "OU=$ou,DC=$domain,DC=$tld"
             Enabled               = $true
-            UserPrincipalName     = "$username@$domain$tld"
+            UserPrincipalName     = "$username$uniqueIdentifier@$domain$tld"
             ChangePasswordAtLogon = $true
             AccountPassword       = (ConvertTo-SecureString "Password123" -AsPlainText -Force)
             Name                  = "$firstName $lastName"  # Combine first and last name for the Name attribute
@@ -102,3 +110,6 @@ $duration = [math]::Round(($endTime - $startTime).TotalSeconds)
 
 # Display a message with the number of users added, skipped, and the duration
 Write-Host "User import completed successfully. Added $usersAdded users, Skipped $usersSkipped users. Duration: $duration seconds."
+
+# Stop Transcript for logging
+Stop-Transcript
