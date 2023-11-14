@@ -4,9 +4,10 @@ This automates Active Directory user creation. It prompts for domain, top-level 
 To use:
 1. Copy over the script and the csv file in the same folder
 2. Load powershell, and launch the script
-3. type the start of your domain i.e google
-4. type your tld(do not include a .) i.e com
-5. Let the script work its magic.
+3. Enter the location of the csv file 
+4. type the start of your domain i.e google
+5. type your tld(do not include a .) i.e com
+6. Let the script work its magic.
 ## Features:
 
 - **Dynamic Configuration:** Prompt for domain, top-level domain, and organizational unit.
