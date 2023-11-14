@@ -21,7 +21,6 @@ function Get-OrganizationalUnits {
 }
 
 # Function to create a user
-# Function to create a user with a unique UPN
 function Create-User {
     param (
         [string]$username,
@@ -33,8 +32,6 @@ function Create-User {
 
     # Attempt to create the user account
     try {
-        # Generate a unique UPN by appending a unique identifier
-        $uniqueIdentifier = Get-Date -Format "yyyyMMddHHmmss"
         $userParams = @{
             SamAccountName        = $username
             GivenName             = $firstName
@@ -42,7 +39,7 @@ function Create-User {
             EmailAddress          = $email
             Path                  = "OU=$ou,DC=$domain,DC=$tld"
             Enabled               = $true
-            UserPrincipalName     = "$username$uniqueIdentifier@$domain$tld"
+            UserPrincipalName     = "$username@$domain$tld"
             ChangePasswordAtLogon = $true
             AccountPassword       = (ConvertTo-SecureString "Password123" -AsPlainText -Force)
             Name                  = "$firstName $lastName"  # Combine first and last name for the Name attribute
