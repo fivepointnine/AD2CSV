@@ -1,13 +1,6 @@
 # CSV2AD
 This automates Active Directory user creation. It prompts for domain, top-level domain, and organizational unit, ensuring connectivity and OU existence. The user details, sourced from a CSV file, generate accounts with default passwords. The script creates accounts efficiently, providing success messages, while tracking added and skipped users. 
 
-To use:
-1. Copy over the script and the csv file in the same folder
-2. Load powershell, and launch the script
-3. Enter the location of the csv file 
-4. type the start of your domain i.e google
-5. type your tld(do not include a .) i.e com
-6. Let the script work its magic.
 ## Features:
 
 - **Dynamic Configuration:** Prompt for domain, top-level domain, and organizational unit.
