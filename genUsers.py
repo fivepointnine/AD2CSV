@@ -10,7 +10,7 @@ def generate_users_csv():
         fieldnames = ['username', 'firstname', 'lastname', 'email']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-
+        #Change the range for the amount of users you wish to create starting at 0
         for i in range(1, 1001):
             firstname = names.get_first_name()
             lastname = names.get_last_name()
